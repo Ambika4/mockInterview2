@@ -1,12 +1,20 @@
 const express = require('express');
 const app = express();
 const db=require('./config/mongoose');
-const port=8001;/** On port 80 all website hosts */
+const port=8000;/** On port 80 all website hosts */
 /*app listen to the port*/
+//set up view engine
+app.set('view engine','ejs');
+app.set('views','./views');
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+//for reading key value pair in the html form add it before routes.
+app.use(express.urlencoded());
+
+
+//going to use express router
+//It is pointing to index file in routes folder
+//app.use signify middlewares
+app.use('/',require('./routes'));
 
 app.listen(port,function(err){
     if(err){

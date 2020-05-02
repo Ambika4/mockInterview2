@@ -17,6 +17,18 @@ const studentSchema= new mongoose.Schema({
     status:{
         type:Boolean,
         required:true
+    },
+    dsaScore:{
+        type:Number,
+        required:true
+    },
+    webDScore:{
+        type:Number,
+        required:true
+    },
+    reactScore:{
+        type:Number,
+        required:true
     }
 });
 

@@ -1,9 +1,9 @@
 //require the libray
 const mongoose= require('mongoose');
-const autoIncrement = require('mongodb-autoincrement');
+
 
 //connect to the database
-mongoose.connect('mongodb://localhost/mocktest2_db');
+mongoose.connect('mongodb+srv://ambika:ambika123@cluster0-2hzr8.mongodb.net/mocktest2_db?retryWrites=true&w=majority');
 
 //acquire the connection(to check if it is successful)
 const db=mongoose.connection;
