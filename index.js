@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const db=require('./config/mongoose');
-const port=8000;/** On port 80 all website hosts */
+const port=8080;/** On port 80 all website hosts */
 /*app listen to the port*/
 //set up view engine
 app.set('view engine','ejs');

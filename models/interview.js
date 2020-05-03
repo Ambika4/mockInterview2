@@ -6,12 +6,13 @@ const interviewSchema= new mongoose.Schema({
         type:String,
         required:true
     },
-    student:{
-        //reffered to user schema
-        type:mongoose.Schema.Types.ObjectId,
-        //Schema of the user we are reffering
-        ref:'Student'
-    },
+  students:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Student'
+        }
+    ],
+  
     interviewDate:{
         type:String,
         required:true

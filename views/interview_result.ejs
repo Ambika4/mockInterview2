@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>
+            <%= title%>  
+        </title>
+    </head>
+    <body>
+        <div id="result">
+            <% for(student of  studentList){ %>  
+                
+                <p><%=student.name%></p>
+                <%}%>
+
+        </div>
+        <div id="result-form">
+            <form action="/api/v1/interviews/setResult" method="POST" id="result">
+                 <label for="student">Choose result for student:</label>
+                 <select id="student"name="student">
+                    <% for(student of studentList){ %>  
+                  <option name = <%=student._id%> value=<%= student._id%>><%= student.name %></option>
+                  <%}%>
+                  </select>
+                  <select id="option" name="option">
+                    <option value="PASS">PASS</option>
+                    <option value="FAIL">FAIL</option>
+                    <option value="on Hold">on Hold</option>
+                    <option value="Didn't Attempt">Didn't Attempt</option>
+                  </select>
+
+                    <button type="submit">Submit</button><br>
+
+            </form>
+        </div>
+    </body>
+</html>

@@ -6,6 +6,11 @@ const studentSchema= new mongoose.Schema({
         type:String,
         required:true
     },
+    email:{
+        type:String,
+        required:true,
+        unique:true
+    },
     batch:{
         type:String,
         required:true
@@ -29,8 +34,12 @@ const studentSchema= new mongoose.Schema({
     reactScore:{
         type:Number,
         required:true
+    },
+    result:{
+        type:String,
     }
 });
+//module.exports=studentSchema;
 
 //the is a collection i.e is a model
 const Student=mongoose.model('Student',studentSchema);

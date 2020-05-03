@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>
+            <%= title%> 
+        </title>
+    </head>
+    <body>
+        <div id="interview-form">
+            <form action="/api/v1/interviews/createinterview" method="POST" id="interview">
+                <label for="companyName">Company name:</label>
+                <input type="text" id="companyName" name="companyName"><br><br>
+                <label for="interviewDate">Interview Date</label>
+                <input type="date" id="interviewDate" name="interviewDate" required
+                 value="yyyy-mm-dd" min="March 4,2018" max="March 31,2033"><br>
+                 <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div id="allocation-form">
+            <form action="/api/v1/interviews/scheduleinterview" method="POST" id="allocateInterview">
+                 <label for="interview">Choose an interview:</label>
+                 <select id="interview"name="interview">
+                      <% for(let i of interviews){ %>  
+                    <option name = "interview" value=<%= i._id %>><%= i.companyName %></option>
+                    <%}%>
+                    </select>
+                    <label for="student">Choose an Student:</label>
+                 <select id="student"name="student">
+                    <% for(let i of students){ %>   
+                    <option name="student" value=<%= i._id %>><%= i.name %></option>
+                    <%}%>
+                    </select>
+                    <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div id="result-form">
+            <form action="/api/v1/interviews/studentsList" method="GET" id="result">
+                 <label for="interview">Choose an Company:</label>
+                 <select id="interview"name="interview">
+                    <% for(let i of interviews){ %>  
+                  <option name = <%=i._id%> value=<%= i._id%>><%= i.companyName %></option>
+                  <%}%>
+                  </select>
+                    <button type="submit">Submit</button>
+            </form>
+        </div>
+       
+     
+       
+    </body>
+</html>
