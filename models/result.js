@@ -7,10 +7,16 @@ const resultSchema= new mongoose.Schema({
         required:true
     },
     interview:{
-        //reffered to user schema
+        //reffered to Student schema
         type:mongoose.Schema.Types.ObjectId,
         //Schema of the user we are reffering
         ref:'Interview'
+    },
+    student:{
+          //reffered to Student schema
+          type:mongoose.Schema.Types.ObjectId,
+          //Schema of Student  we are reffering
+          ref:'Student'
     }
 });
 

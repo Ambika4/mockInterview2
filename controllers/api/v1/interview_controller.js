@@ -1,5 +1,6 @@
 const Student=require('../../../models/student');
 const Interview=require('../../../models/interview');
+const Result=require('../../../models/result');
 
 module.exports.home=async function(req,res){
      
@@ -64,6 +65,7 @@ module.exports.studentsList=async function(req,res){
             return res.render('interview_result',{
                 title:"Interview",
                 studentList:interview.students,
+                interview:interview
                
             })
               
@@ -75,8 +77,19 @@ module.exports.studentsList=async function(req,res){
     }
   }
 
-  module.exports.setResult=async function(req,res)
+  module.exports.setResult= async function(req,res)
   {
-    console.log(req.body);
-   
+    try{
+      let result= await Result.create({
+       result:req.body.option,
+       interview:req.body.interview,
+       student:req.body.student
+    });
+     
+      return res.redirect('back');
+    
+    }catch(err){
+     console.log(err);
+      return res.redirect('back');
+    }
   }
