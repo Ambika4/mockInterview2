@@ -10,6 +10,7 @@ app.set('views','./views');
 //for reading key value pair in the html form add it before routes.
 app.use(express.urlencoded());
 
+app.use('/downloads',express.static(__dirname+'/downloads'));
 
 //going to use express router
 //It is pointing to index file in routes folder

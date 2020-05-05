@@ -1,4 +1,7 @@
 const Student=require('../../../models/student');
+const path=require('path');
+const fs = require('fs');
+const { parse } = require('json2csv');
 module.exports.home=function(req,res){
 	return res.render('student',{
         	title:"Home"
@@ -48,4 +51,22 @@ module.exports.addStudent=function(req,res)
 
     });
     return res.redirect('back');
+}
+
+module.exports.download=async function(req,res){
+    try{
+        let data=await Student.find({});
+        const fields = ['name', 'email', 'batch','college','status','dsaScore','webDScore','reactScore','reesult'];
+        const opts = { fields,delimiter:'\t'};
+         
+        const result=parse(data,opts);
+
+        res.setHeader('Content-disposition', 'attachment; filename=shifts-report.csv');
+            res.set('Content-Type', 'text/csv');
+            res.status(200).send(result);
+      
+
+    }catch(err){
+        console.log(err); 
+    }
 }
