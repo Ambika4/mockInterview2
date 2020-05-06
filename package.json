@@ -19,10 +19,16 @@
   "homepage": "https://github.com/Ambika4/mockInterview2#readme",
   "dependencies": {
     "blob": "^0.1.0",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.5",
     "ejs": "^3.1.2",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "json2csv": "^5.0.1",
     "mongoose": "^5.9.11",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7"
   }
 }

@@ -1,0 +1,34 @@
+<header id="header_layout">
+    <nav>
+    <div id="header_name">
+       <p> 
+            <a href='/'>
+              CARRIER CAMP
+             </a>
+     </p>
+    </div>
+    <div id="authentication">
+        <!-- list of authentication item -->
+        <ul>
+            <% if(locals.employee){ %>
+            <!-- if employee is present -->
+            <li><a href="/api/v1/students/">Add Student</a></li>
+            <li><a href="/api/v1/interviews/">Add Interviews</a></li>
+            <li>
+                <!-- Sign out option -->
+                <a href="/api/v1/employees/sign-out">Sign Out</a>
+            </li>
+            <% } else{ %>
+                <li>
+                    <!-- Sign in option -->
+                    <a href="/api/v1/employees/sign-in">Sign In</a>
+                </li>
+                <li>
+                     <!-- Sign up option -->
+                     <a href="/api/v1/employees/sign-in">Sign Up</a>
+                </li>
+           <% } %>
+        </ul>
+    </div>
+</nav>
+</header>

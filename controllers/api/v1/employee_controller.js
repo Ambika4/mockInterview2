@@ -30,17 +30,17 @@ catch(err)
 
  //render the signin page
 module.exports.signUp=function(req,res){
-    // if(req.isAuthenticated()){
-    //    return res.redirect('/users/profile');
-    // }
+    if(req.isAuthenticated()){
+       return res.redirect('/api/v1/students/');
+    }
     return res.render('employee_sign_up',{
         title:"Employee| Signup"
     });
 }
 module.exports.signIn=function(req,res){
-    // if(req.isAuthenticated()){
-    //    return res.redirect('/users/profile');
-    // }
+    if(req.isAuthenticated()){
+        return res.redirect('/api/v1/students/');
+     }
     return res.render('employee_sign_in',{
         title:"Employee | Signin"
     });
@@ -51,4 +51,11 @@ module.exports.createSession = async function(req, res){
     return res.redirect('/api/v1/students/');
 
     return res.redirect('back');
+}
+//destory current session
+module.exports.destorySession=function(req,res){
+    //logout function is due to passport js
+
+    req.logout();
+    return res.redirect('/');
 }
