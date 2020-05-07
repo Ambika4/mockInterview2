@@ -31,7 +31,7 @@ catch(err)
  //render the signin page
 module.exports.signUp=function(req,res){
     if(req.isAuthenticated()){
-       return res.redirect('/api/v1/students/');
+       return res.redirect('/api/v1/employees/');
     }
     return res.render('employee_sign_up',{
         title:"Employee| Signup"
@@ -39,7 +39,7 @@ module.exports.signUp=function(req,res){
 }
 module.exports.signIn=function(req,res){
     if(req.isAuthenticated()){
-        return res.redirect('/api/v1/students/');
+        return res.redirect('/api/v1/employees/');
      }
     return res.render('employee_sign_in',{
         title:"Employee | Signin"
@@ -57,5 +57,5 @@ module.exports.destorySession=function(req,res){
     //logout function is due to passport js
 
     req.logout();
-    return res.redirect('/');
+    return res.redirect('/api/v1');
 }

@@ -1,9 +1,10 @@
 const express = require('express');
 const cookieParser=require('cookie-parser');
 const app = express();
-const db=require('./config/mongoose');
 const port=8080;/** On port 80 all website hosts */
 /*app listen to the port*/
+const db=require('./config/mongoose');
+//use for session cookie
 const session=require('express-session');
 const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy');
@@ -17,10 +18,11 @@ const MongoStore=require('connect-mongo')(session);
 app.use(express.urlencoded());
 app.use(cookieParser());
 
+
+
 //set up view engine
 app.set('view engine','ejs');
 app.set('views','./views');
-
 
 //mongo store is used to store session cookie in the db
 app.use(session({
@@ -53,10 +55,12 @@ app.use(session({
     )
 }));
 
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+
 //going to use express router
 //It is pointing to index file in routes folder
 //app.use signify middlewares

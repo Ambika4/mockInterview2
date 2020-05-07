@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+    </head>
+    <body>
+        <%- include('_header')%>
+        <h1>Student List</h1>
+        <div id ="display">
+       
+        <ul>
+        <% for(let student of students){ %>
+         <li>
+             <div>
+                 <%=student.name%>
+             </div>
+         </li>
+         <%}%>
+        </ul>
+    </div>
+    <div id="Add student">
+        <button><a href="/api/v1/students/">Add Student</a></button>
+
+    </div>
+    </body>
+</html>

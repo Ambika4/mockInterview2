@@ -2,18 +2,19 @@
     <nav>
     <div id="header_name">
        <p> 
-            <a href='/'>
-              CARRIER CAMP
+            <a href='/api/v1/'>
+              CAREER CAMP
              </a>
      </p>
     </div>
     <div id="authentication">
         <!-- list of authentication item -->
         <ul>
-            <% if(locals.employee){ %>
+            <% if(locals.user){ %>
             <!-- if employee is present -->
             <li><a href="/api/v1/students/">Add Student</a></li>
             <li><a href="/api/v1/interviews/">Add Interviews</a></li>
+            <li><a href="/api/v1/students/display">Student List</a></li>
             <li>
                 <!-- Sign out option -->
                 <a href="/api/v1/employees/sign-out">Sign Out</a>
@@ -25,7 +26,7 @@
                 </li>
                 <li>
                      <!-- Sign up option -->
-                     <a href="/api/v1/employees/sign-in">Sign Up</a>
+                     <a href="/api/v1/employees/sign-up">Sign Up</a>
                 </li>
            <% } %>
         </ul>

@@ -9,19 +9,19 @@ module.exports.home=function(req,res){
     	});
     
 }
-module.exports.allStudent=function(req,res){
-    Student.find({},function(err,students){
-        if(err){
-            console.log("Error in fetching the content");
-            return;
-        }
-       // console.log(students);
+module.exports.allStudent=async function(req,res){
+    try{
+  let students= await Student.find({});
 
-	return res.render('interview',{
-        	title:"Interview",
+	return res.render('display_student',{
+        	title:"Carrier Camp|Students",
         	students:students
     	});
-    });
+    }catch(err)
+    {
+        console.log(err);
+        
+    }
     
 }
 

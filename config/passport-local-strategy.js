@@ -21,17 +21,19 @@ function(req,email,password,done){
        //Error
        if(err)
        {
-           req.send(400).json({message:'error in finding Employee',err});
+        //    req.send(400).json({message:'error in finding Employee',err});
+            console.log('Error in finding employee-->passport')
            //report error to passport
            return done(err);
        }
        //if user is not found or password is incorrect
        if(!employee|| employee.password!=password)
        {
-        req.send(400).json({message:'Invalid user name or password Employee',err});
+        // res.send(400).json({message:'Invalid user name or password Employee',err});
+        console.log("Invalid username or password");
            return done(null,false);
        }
-
+      
        return done(null,employee);
    });
 }
@@ -47,7 +49,8 @@ passport.serializeUser(function(employee,done){
 passport.deserializeUser(function(id,done){
     Employee.findById(id,function(err,employee){
         if(err){
-            req.send(400).json({message:'error in finding Employee->passport',err});
+            console.log("Invalid username or password");
+            // req.send(400).json({message:'error in finding Employee->passport',err});
            //report error to passport
            //done function is call back function
            return done(err);
@@ -72,7 +75,9 @@ passport.setAuthenticatedUser=function(req,res,next){
     if(req.isAuthenticated()){
         //req.user contains the current siged in user from the session cookie and we are 
         //just sending this to the locals for the views
-        res.locals.employee=req.employee
+        res.locals.user=req.user;
+        
+        console.log(res.locals.user)
     }
     next();
 }
