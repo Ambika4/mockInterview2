@@ -32,9 +32,9 @@ module.exports.allStudent=async function(req,res){
 module.exports.addStudent=function(req,res)
 {
     if(req.body.status=="on")
-    x=true;
+    x="placed";
     else
-    x=false;
+    x="not_placed";
     console.log(req.body);
     Student.collection.insertOne({
         name:req.body.name,
@@ -63,7 +63,7 @@ module.exports.addStudent=function(req,res)
 module.exports.download=async function(req,res){
     try{
         let data=await Student.find({});
-        const fields = ['name', 'email', 'batch','college','status','dsaScore','webDScore','reactScore','reesult'];
+        const fields = ['name', 'email', 'batch','college','dsaScore','webDScore','reactScore','status'];
         const opts = { fields,delimiter:','};
          
         const result=parse(data,opts);
