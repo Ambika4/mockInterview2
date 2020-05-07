@@ -2,6 +2,8 @@ const Student=require('../../../models/student');
 const path=require('path');
 const fs = require('fs');
 const { parse } = require('json2csv');
+
+//rendering home page
 module.exports.home=function(req,res){
 	return res.render('student',{
         	title:"Home"
@@ -9,12 +11,13 @@ module.exports.home=function(req,res){
     	});
     
 }
+//all student list
 module.exports.allStudent=async function(req,res){
     try{
   let students= await Student.find({});
 
 	return res.render('display_student',{
-        	title:"Carrier Camp|Students",
+        	title:"Career Camp|Students",
         	students:students
     	});
     }catch(err)
@@ -25,6 +28,7 @@ module.exports.allStudent=async function(req,res){
     
 }
 
+//function to add student
 module.exports.addStudent=function(req,res)
 {
     if(req.body.status=="on")
@@ -53,6 +57,9 @@ module.exports.addStudent=function(req,res)
     return res.redirect('back');
 }
 
+//function to download csv file
+//used json2csv to parse the data
+
 module.exports.download=async function(req,res){
     try{
         let data=await Student.find({});
@@ -61,6 +68,7 @@ module.exports.download=async function(req,res){
          
         const result=parse(data,opts);
 
+        //set for sending the file at client side
         res.setHeader('Content-disposition', 'attachment; filename=shifts-report.csv');
         res.set('Content-Type', 'text/csv');
         res.status(200).send(result);

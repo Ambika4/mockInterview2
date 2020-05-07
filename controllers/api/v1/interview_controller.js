@@ -14,6 +14,7 @@ module.exports.home=async function(req,res){
      })
 }
 
+//function to create interview
 module.exports.createInterview= async function(req,res){
    // console.log(req.body);
  try{
@@ -32,6 +33,8 @@ module.exports.createInterview= async function(req,res){
       
 }
 
+
+//schedule interview for student in company
 module.exports.scheduleInterview=async function(req,res){
     console.log(req.body);
     
@@ -55,6 +58,8 @@ module.exports.scheduleInterview=async function(req,res){
       return;
   }
 }
+
+//List of student for selected company interview
 module.exports.studentsList=async function(req,res){
   // console.log(req.query);
     try{
@@ -76,7 +81,7 @@ module.exports.studentsList=async function(req,res){
         return;
     }
   }
-
+//funtion to set result of student
   module.exports.setResult= async function(req,res)
   {
     try{

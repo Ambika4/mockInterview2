@@ -48,7 +48,7 @@ module.exports.signIn=function(req,res){
 module.exports.createSession = async function(req, res){
     let employee=await Employee.findOne({email:req.body.email});
     if(req.body.password==employee.password)
-    return res.redirect('/api/v1/students/');
+    return res.redirect('/api/v1/employees/');
 
     return res.redirect('back');
 }
@@ -57,5 +57,5 @@ module.exports.destorySession=function(req,res){
     //logout function is due to passport js
 
     req.logout();
-    return res.redirect('/api/v1');
+    return res.redirect('/api/v1/employees/');
 }

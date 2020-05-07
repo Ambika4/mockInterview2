@@ -10,6 +10,7 @@
     <div id="authentication">
         <!-- list of authentication item -->
         <ul>
+            <!-- locals are very important for passing current user presence -->
             <% if(locals.user){ %>
             <!-- if employee is present -->
             <li><a href="/api/v1/students/">Add Student</a></li>

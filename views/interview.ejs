@@ -6,7 +6,7 @@
     </head>
     <body>
         <%- include('_header')%>
-        
+        <!-- div for displaying interview -->
         <div id="display-interviews">
             <h2>List of company for interview</h2> 
             <ul>
@@ -20,22 +20,24 @@
                  <%}%>
                 </ul>
         </div>
+        <!-- form to display interview -->
         <div id="interview-form">
             <h2>Schedule interview</h2>
             <form action="/api/v1/interviews/createinterview" method="POST" id="interview">
                 <label for="companyName">Company name:</label>
-                <input type="text" id="companyName" name="companyName"><br><br>
+                <input type="text" id="companyName" name="companyName" required><br><br>
                 <label for="interviewDate">Interview Date</label>
                 <input type="date" id="interviewDate" name="interviewDate" required
                  value="yyyy-mm-dd" min="March 4,2018" max="March 31,2033"><br>
                  <button type="submit">Submit</button>
             </form>
         </div>
+        <!-- Form to allocate students to interview -->
         <div id="allocation-form">
             <h2>Allocate students for interview</h2>
             <form action="/api/v1/interviews/scheduleinterview" method="POST" id="allocateInterview">
                  <label for="interview">Choose an interview:</label>
-                 <select id="interview"name="interview">
+                 <select id="interview"name="interview" required>
                       <% for(let i of interviews){ %>  
                     <option name = "interview" value=<%= i._id %>><%= i.companyName %></option>
                     <%}%>
@@ -51,6 +53,7 @@
         </div>
         <div>
             
+            <!-- form to set results for student -->
         </div>
         <div id="result-form">
             <h2>Select Company for list Students  </h2>

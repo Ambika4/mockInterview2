@@ -13,6 +13,7 @@
                 <%}%>
 
         </div>
+        <!-- form for result -->
         <div id="result-form">
             <form action="/api/v1/interviews/setResult" method="POST" id="result">
                  <label for="student">Choose result for student:</label>
@@ -27,6 +28,7 @@
                     <option value="on Hold">on Hold</option>
                     <option value="Didn't Attempt">Didn't Attempt</option>
                   </select>
+                  <!-- hidden input for interview id -->
                   <input type="hidden" name="interview" value="<%=interview._id %>" >
                     <button type="submit">Submit</button><br>
 
